@@ -7,17 +7,21 @@ import ProductList from './ProductList.jsx';
 import NotFound from './NotFound.jsx';
 import ProductView from './ProductView.jsx';
 import ProductEdit from './ProductEdit.jsx';
+import Navigation from "./Navigation.jsx";
 
 const element = (
-  <Router>
-    <Switch>
-      <Redirect exact from="/" to="/products" />
-      <Route path="/products" component={ProductList} />
-      <Route path="/view/:id" component={ProductView} />
-      <Route path="/edit/:id" component={ProductEdit} />
-      <Route component={NotFound} />
-    </Switch>
-  </Router>
+    <React.Fragment>
+        <Router>
+            <Navigation />
+            <Switch>
+                <Redirect exact from="/" to="/products" />
+                <Route path="/products" component={ProductList} />
+                <Route path="/view/:id" component={ProductView} />
+                <Route path="/edit/:id" component={ProductEdit} />
+                <Route component={NotFound} />
+            </Switch>
+        </Router>
+    </React.Fragment>
 );
 
 ReactDOM.render(element, document.getElementById('root'));
